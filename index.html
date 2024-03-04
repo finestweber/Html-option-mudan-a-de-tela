@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-around;
+            width: 300px;
+            margin: 0 auto;
+            /* Adicionado para centralizar horizontalmente */
+        }
+
+        .option {
+            padding: 10px 20px;
+            background-color: lightblue;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.5s ease;
+
+        }
+
+        #page-cabelo {
+            background-color: lightblue;
+
+
+        }
+
+        #page-tinta {
+            background-color: lightgreen;
+
+
+        }
+
+        .show-page {
+            display: flex;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="options">
+            <div class="option" id="btn-cabelo">Cabelo</div>
+            <div class="option" id="btn-tinta">Tinta</div>
+        </div>
+        <div class="page" id="page-cabelo">
+            <h2>Página de Cabelo</h2>
+            <a href="#" class="back-button">&#8592; Voltar</a>
+        </div>
+        <div class="page" id="page-tinta">
+            <h2>Página de Tinta</h2>
+            <a href="#" class="back-button">&#8592; Voltar</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const btnCabelo = document.getElementById('btn-cabelo');
+            const btnTinta = document.getElementById('btn-tinta');
+            const pageCabelo = document.getElementById('page-cabelo');
+            const pageTinta = document.getElementById('page-tinta');
+
+            // Adiciona evento de clique para o botão Cabelo
+            btnCabelo.addEventListener('click', function (e) {
+                e.preventDefault();
+                pageCabelo.classList.add('show-page');
+                pageTinta.classList.remove('show-page');
+            });
+
+            // Adiciona evento de clique para o botão Tinta
+            btnTinta.addEventListener('click', function (e) {
+                e.preventDefault();
+                pageCabelo.classList.remove('show-page');
+                pageTinta.classList.add('show-page');
+            });
+
+            // Adiciona evento de clique para o botão de voltar na página de Cabelo
+            pageCabelo.querySelector('.back-button').addEventListener('click', function (e) {
+                e.preventDefault();
+                pageCabelo.classList.remove('show-page');
+            });
+
+            // Adiciona evento de clique para o botão de voltar na página de Tinta
+            pageTinta.querySelector('.back-button').addEventListener('click', function (e) {
+                e.preventDefault();
+                pageTinta.classList.remove('show-page');
+            });
+        });
+    </script>
+</body>
+
+</html>
